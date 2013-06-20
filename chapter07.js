@@ -113,7 +113,7 @@ function Queue(elems) {
 
 Queue.prototype = {
   enqueue: function(thing) {
-    return new Queue(this._q + thing);
+    return new Queue(cat(this._q, [thing]));
   }
 };
 
