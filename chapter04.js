@@ -1,4 +1,3 @@
-
 var people = [{name: "Fred", age: 65}, {name: "Lucy", age: 36}];
 
 _.max(people, function(p) { return p.age });
@@ -16,7 +15,7 @@ function finder(valueFun, bestFun, coll) {
 
 function best(fun, coll) {
   return _.reduce(coll, function(x, y) {
-    return fun(x, y) ? x : y
+    return fun(x, y) ? x : y;
   });
 }
 
@@ -178,7 +177,7 @@ function checker(/* validators */) {
   return function(obj) {
     return _.reduce(validators, function(errs, check) {
       if (check(obj))
-        return errs
+        return errs;
       else
         return _.chain(errs).push(check.message).value();
     }, []);
