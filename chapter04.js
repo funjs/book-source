@@ -199,9 +199,9 @@ function aMap(obj) {
 
 var checkCommand = checker(validator("must be a map", aMap));
 
-function hasKeys() {
+function hasKeysValidator() {
   var KEYS = _.toArray(arguments);
-  var message = cat(["Must have values for keys:"], KEYS).join(" ")
+  var message = cat(["Must have values for keys:"], KEYS).join(" ");
 
   return validator(message, function(obj) {
     return _.every(KEYS, function(k) {
@@ -210,4 +210,4 @@ function hasKeys() {
   });
 }
 
-var checkCommand = checker(validator("must be a map", aMap), hasKeys('msg', 'type'));
+var checkCommand = checker(validator("must be a map", aMap), hasKeysValidator('msg', 'type'));
