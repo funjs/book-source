@@ -199,17 +199,15 @@ function aMap(obj) {
 
 var checkCommand = checker(validator("must be a map", aMap));
 
-function hasKeys() {
+function hasKeysValidator() {
   var KEYS = _.toArray(arguments);
+  var message = cat(["Must have values for keys:"], KEYS).join(" ");
 
-  var fun = function(obj) {
+  return validator(message, function(obj) {
     return _.every(KEYS, function(k) {
       return _.has(obj, k);
     });
-  };
-
-  fun.message = cat(["Must have values for keys:"], KEYS).join(" ");
-  return fun;
+  });
 }
 
-var checkCommand = checker(validator("must be a map", aMap), hasKeys('msg', 'type'));
+var checkCommand = checker(validator("must be a map", aMap), hasKeysValidator('msg', 'type'));
